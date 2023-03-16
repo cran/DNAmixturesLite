@@ -1,0 +1,34 @@
+##' Dyes for a DNA mixture
+##'
+##' @description \emph{IMPORTANT: This is the \pkg{DNAmixturesLite}
+##'     package, which is intended as a service to enable users to try
+##'     \pkg{DNAmixtures} without purchasing a commercial licence for
+##'     Hugin. When at all possible, we strongly recommend the use of
+##'     \pkg{DNAmixtures} rather than this lite-version. See
+##'     \url{https://dnamixtures.r-forge.r-project.org/} for details
+##'     on both packages.}
+##'
+##' \emph{While the lite-version seeks to provide the full functionality of
+##' \pkg{DNAmixtures}, note that computations are much less efficient
+##' and that there are some differences in available functionality. Be
+##' aware that the present documentation is copied from
+##' \pkg{DNAmixtures} and thus may not accurately describe the
+##' implementation of this lite-version.}
+##'
+##' @param mixture A DNA mixture
+##' @return The dyes used for the DNA mixture
+##' @export
+##' @seealso \code{\link{DNAmixture}}
+dyes <- function(mixture){
+  mixture$dyes
+}
+
+##' @rdname dyes
+##' @usage dyes(mixture) <- value
+##' @param value A list with one item per dye, each containing a vector of marker names.
+##' @export
+"dyes<-" <- function(mixture, value){
+  if (length(value) != mixture$ntraces) stop("Number of dyes does not match number of traces")
+  mixture$dyes <- value
+  mixture
+}
